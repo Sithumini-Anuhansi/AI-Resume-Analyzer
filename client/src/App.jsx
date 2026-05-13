@@ -1,8 +1,15 @@
-function App() {
+import { Routes, Route, useNavigate } from "react-router-dom";
+import UploadPage from "./pages/UploadPage";
+import ResultPage from "./pages/ResultPage";
+import { Toaster } from "react-hot-toast";
+
+function Home() {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
       <div className="bg-white p-10 rounded-2xl shadow-lg text-center max-w-xl w-full">
-        
+
         <h1 className="text-5xl font-bold text-blue-600 mb-4">
           AI Resume Analyzer
         </h1>
@@ -29,12 +36,35 @@ function App() {
           </div>
         </div>
 
-        <button className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition duration-300">
+        <button
+          onClick={() => navigate("/upload")}
+          className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition duration-300"
+        >
           Get Started
         </button>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+function App() {
+  return (
+    <>
+      {/* Toast Notifications */}
+      <Toaster position="top-right" />
+
+      <Routes>
+        {/* Landing Page */}
+        <Route path="/" element={<Home />} />
+
+        {/* Upload Page */}
+        <Route path="/upload" element={<UploadPage />} />
+
+        {/* Result Page */}
+        <Route path="/result" element={<ResultPage />} />
+      </Routes>
+    </>
+  );
+}
+
+export default App;
