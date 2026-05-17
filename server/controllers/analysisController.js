@@ -1,9 +1,10 @@
 const analyzeResume = require("../services/aiService");
+const Analysis = require("../models/Analysis");
 
-// ANALYZE RESUME
+// ANALYZE + SAVE RESULT
 exports.analyze = async (req, res) => {
     try {
-        const { resumeText, jobDescription } = req.body;
+        const { resumeText, jobDescription, userId } = req.body;
 
         if (!resumeText || !jobDescription) {
             return res.status(400).json({
@@ -11,11 +12,20 @@ exports.analyze = async (req, res) => {
             });
         }
 
+        // Get AI result
         const result = await analyzeResume(resumeText, jobDescription);
 
-        res.status(200).json({
-            message: "Analysis completed",
+        // Save to DB
+        const analysis = await Analysis.create({
+            userId,
+            resumeText,
+            jobDescription,
             result
+        });
+
+        res.status(200).json({
+            message: "Analysis completed and saved",
+            analysis
         });
 
     } catch (error) {

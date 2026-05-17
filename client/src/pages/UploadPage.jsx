@@ -30,7 +30,8 @@ function UploadPage() {
             // 2. Send to AI analysis
             const analysisRes = await API.post("/analysis/analyze", {
                 resumeText,
-                jobDescription
+                jobDescription,
+		userId: "123456" // temporary (we replace with login later)
             });
 
             // 3. Save result locally

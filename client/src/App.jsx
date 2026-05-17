@@ -1,6 +1,7 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import UploadPage from "./pages/UploadPage";
 import ResultPage from "./pages/ResultPage";
+import Dashboard from "./pages/Dashboard";
 import { Toaster } from "react-hot-toast";
 
 function Home() {
@@ -62,6 +63,9 @@ function App() {
 
         {/* Result Page */}
         <Route path="/result" element={<ResultPage />} />
+
+	{/* Dashboard Page */}
+	<Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </>
   );

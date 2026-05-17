@@ -13,6 +13,7 @@ connectDB();
 const authRoutes = require("./routes/authRoutes");
 const resumeRoutes = require("./routes/resumeRoutes");
 const analysisRoutes = require("./routes/analysisRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes");
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/resume", resumeRoutes);
 app.use("/api/analysis", analysisRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 // Handle invalid routes
 app.use((req, res) => {
