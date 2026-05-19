@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
+const protect = require("../middleware/authMiddleware");
 const { getUserAnalyses } = require("../controllers/dashboardController");
 
-// Get history
-router.get("/:userId", getUserAnalyses);
+// 🔒 NO :userId PARAM ANYMORE
+router.get("/", protect, getUserAnalyses);
 
 module.exports = router;

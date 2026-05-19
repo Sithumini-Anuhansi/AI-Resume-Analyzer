@@ -1,10 +1,13 @@
-const analyzeResume = require("../services/aiService");
 const Analysis = require("../models/Analysis");
+const analyzeResume = require("../services/aiService");
 
-// ANALYZE + SAVE RESULT
+// ANALYZE + SAVE RESULT (SECURE VERSION)
 exports.analyze = async (req, res) => {
     try {
-        const { resumeText, jobDescription, userId } = req.body;
+        const { resumeText, jobDescription } = req.body;
+
+        // ✅ USER FROM JWT (NOT FRONTEND)
+        const userId = req.user.id;
 
         if (!resumeText || !jobDescription) {
             return res.status(400).json({
@@ -12,10 +15,8 @@ exports.analyze = async (req, res) => {
             });
         }
 
-        // Get AI result
         const result = await analyzeResume(resumeText, jobDescription);
 
-        // Save to DB
         const analysis = await Analysis.create({
             userId,
             resumeText,
@@ -24,7 +25,7 @@ exports.analyze = async (req, res) => {
         });
 
         res.status(200).json({
-            message: "Analysis completed and saved",
+            message: "Analysis completed successfully",
             analysis
         });
 

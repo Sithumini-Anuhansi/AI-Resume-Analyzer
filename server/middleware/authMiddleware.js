@@ -11,15 +11,24 @@ const protect = (req, res, next) => {
     }
 
     if (!token) {
-        return res.status(401).json({ message: "Not authorized" });
+        return res.status(401).json({
+            message: "Not authorized, token missing"
+        });
     }
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = decoded;
+
+        req.user = {
+            id: decoded.id
+        };
+
         next();
+
     } catch (error) {
-        res.status(401).json({ message: "Token failed" });
+        return res.status(401).json({
+            message: "Token invalid or expired"
+        });
     }
 };
 

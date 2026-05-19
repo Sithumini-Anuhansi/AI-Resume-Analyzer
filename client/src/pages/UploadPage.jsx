@@ -13,19 +13,18 @@ function UploadPage() {
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
-
-    // Get logged-in user from context
     const { user } = useContext(AuthContext);
 
     const handleAnalyze = async () => {
 
-        if (!file || !jobDescription) {
-            toast.error("Upload resume and add job description");
+        // ---------------- VALIDATION ----------------
+        if (!file || !jobDescription.trim()) {
+            toast.error("Please upload resume and add job description");
             return;
         }
 
-        if (!user) {
-            toast.error("You must be logged in");
+        if (!user?.id) {
+            toast.error("Session expired. Please login again.");
             navigate("/login");
             return;
         }
@@ -34,41 +33,52 @@ function UploadPage() {
 
         try {
 
-            // Upload resume
+            // ---------------- UPLOAD RESUME ----------------
             const formData = new FormData();
             formData.append("resume", file);
 
-            const uploadRes = await API.post(
-                "/resume/upload",
-                formData
-            );
-
-            const resumeText = uploadRes.data.extractedText;
-
-            // AI Analysis
-            const analysisRes = await API.post(
-                "/analysis/analyze",
-                {
-                    resumeText,
-                    jobDescription,
-                    userId: user.id
+            const uploadRes = await API.post("/resume/upload", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data"
                 }
-            );
+            });
 
-            // Save analysis result locally
+            const resumeText = uploadRes?.data?.extractedText;
+
+            if (!resumeText) {
+                throw new Error("Failed to extract resume text");
+            }
+
+            // ---------------- AI ANALYSIS ----------------
+            const analysisRes = await API.post("/analysis/analyze", {
+                resumeText,
+                jobDescription,
+                userId: user?.id
+            });
+
+            const analysis = analysisRes?.data?.analysis;
+
+            if (!analysis) {
+                throw new Error("Analysis failed");
+            }
+
+            // ---------------- SAVE RESULT LOCALLY ----------------
             localStorage.setItem(
                 "analysisResult",
-                JSON.stringify(analysisRes.data.analysis.result)
+                JSON.stringify(analysis.result)
             );
 
-            toast.success("Analysis completed!");
+            toast.success("Analysis completed successfully!");
 
             navigate("/result");
 
         } catch (error) {
 
+            console.error(error);
+
             toast.error(
                 error.response?.data?.message ||
+                error.message ||
                 "Something went wrong"
             );
 
@@ -80,45 +90,58 @@ function UploadPage() {
     return (
         <div className="min-h-screen bg-gray-100">
 
-            {/* Navbar */}
             <Navbar />
 
-            {/* Main Content */}
             <div className="flex justify-center p-6">
 
                 <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-3xl">
 
-                    {/* Title */}
-                    <h1 className="text-3xl font-bold mb-2 text-center text-blue-600">
+                    {/* TITLE */}
+                    <h1 className="text-3xl font-bold text-center text-blue-600">
                         Resume Analysis
                     </h1>
 
-                    <p className="text-center text-gray-500 mb-8">
-                        Upload your resume and compare it with a job description using AI
+                    <p className="text-center text-gray-500 mt-2 mb-8">
+                        Upload your resume and analyze it using AI
                     </p>
 
-                    {/* Upload Section */}
-                    <div className="border-2 border-dashed border-gray-300 rounded-2xl p-8 mb-6 text-center bg-gray-50">
+                    {/* FILE UPLOAD CARD */}
+                    <div className="border-2 border-dashed border-gray-300 rounded-2xl p-8 mb-6 text-center bg-gray-50 hover:border-blue-400 transition">
 
                         <input
                             type="file"
-                            accept=".pdf"
+                            id="resumeUpload"
+                            accept=".pdf,.doc,.docx"
                             onChange={(e) => setFile(e.target.files[0])}
-                            className="mb-4"
+                            className="hidden"
                         />
 
-                        <p className="text-gray-500">
-                            Upload Resume PDF
+                        <label
+                            htmlFor="resumeUpload"
+                            className="cursor-pointer text-blue-600 font-semibold text-lg"
+                        >
+                            Choose Resume File
+                        </label>
+
+                        <p className="text-sm text-gray-500 mt-2">
+                            Supported formats: PDF, DOC, DOCX
                         </p>
 
-                        {file && (
-                            <div className="mt-4 text-sm text-green-600 font-medium">
-                                Selected File: {file.name}
-                            </div>
-                        )}
+                        {/* FILE STATUS */}
+                        <div className="mt-4">
+                            {file ? (
+                                <span className="text-green-600 font-medium">
+                                    Selected: {file.name}
+                                </span>
+                            ) : (
+                                <span className="text-gray-400">
+                                    No file selected
+                                </span>
+                            )}
+                        </div>
                     </div>
 
-                    {/* Job Description */}
+                    {/* JOB DESCRIPTION */}
                     <div className="mb-6">
 
                         <label className="block mb-2 font-semibold text-gray-700">
@@ -126,7 +149,7 @@ function UploadPage() {
                         </label>
 
                         <textarea
-                            placeholder="Paste Job Description here..."
+                            placeholder="Paste job description here..."
                             value={jobDescription}
                             onChange={(e) => setJobDescription(e.target.value)}
                             className="
@@ -143,7 +166,7 @@ function UploadPage() {
                         />
                     </div>
 
-                    {/* Analyze Button */}
+                    {/* BUTTON */}
                     <button
                         onClick={handleAnalyze}
                         disabled={loading}
@@ -158,12 +181,14 @@ function UploadPage() {
                             duration-300
                             font-semibold
                             text-lg
+                            disabled:opacity-60
+                            disabled:cursor-not-allowed
                         "
                     >
-                        {loading ? "Analyzing..." : "Analyze Resume"}
+                        {loading ? "Analyzing Resume..." : "Analyze Resume"}
                     </button>
 
-                    {/* Loader */}
+                    {/* LOADER */}
                     {loading && <Loader />}
 
                 </div>
