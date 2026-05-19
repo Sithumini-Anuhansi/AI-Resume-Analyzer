@@ -1,7 +1,9 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import UploadPage from "./pages/UploadPage";
 import ResultPage from "./pages/ResultPage";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
 import { Toaster } from "react-hot-toast";
 
 function Home() {
@@ -38,7 +40,7 @@ function Home() {
         </div>
 
         <button
-          onClick={() => navigate("/upload")}
+          onClick={() => navigate("/login")}
           className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition duration-300"
         >
           Get Started
@@ -55,17 +57,37 @@ function App() {
       <Toaster position="top-right" />
 
       <Routes>
-        {/* Landing Page */}
+        {/* Public Routes */}
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
 
-        {/* Upload Page */}
-        <Route path="/upload" element={<UploadPage />} />
+        {/* Protected Routes (STEP 7 SECURITY LAYER) */}
+        <Route
+          path="/upload"
+          element={
+            <ProtectedRoute>
+              <UploadPage />
+            </ProtectedRoute>
+          }
+        />
 
-        {/* Result Page */}
-        <Route path="/result" element={<ResultPage />} />
+        <Route
+          path="/result"
+          element={
+            <ProtectedRoute>
+              <ResultPage />
+            </ProtectedRoute>
+          }
+        />
 
-	{/* Dashboard Page */}
-	<Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
   );
