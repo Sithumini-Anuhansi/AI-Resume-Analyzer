@@ -2,7 +2,10 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
+import logo from "../images/logo.png";
+
 function Navbar() {
+
     const { logout } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -12,34 +15,121 @@ function Navbar() {
     };
 
     return (
-        <div className="bg-white shadow px-8 py-4 flex justify-between items-center">
-            <h1 className="text-2xl font-bold text-blue-600">
-                AI Resume Analyzer
-            </h1>
 
-            <div className="flex gap-4">
+        <nav className="bg-gradient-to-r
+                        from-blue-200
+			via-white
+                        to-blue-200 backdrop-blur-md shadow-lg px-6 py-4 flex justify-between items-center">
+
+            {/* ================= LEFT SIDE ================= */}
+	    <div
+    		className="flex items-center cursor-pointer"
+    		onClick={() => navigate("/dashboard")}
+	    >
+
+		{/* LOGO */}
+		<img
+        	    src={logo}
+        	    alt="ResuMate Logo"
+        	    className="h-20 object-contain"
+    		/>
+
+    		{/* APP NAME */}
+    		<div className="leading-tight flex flex-col justify-left">
+
+        	<h1
+            	    className="
+                    	text-4xl
+                    	font-extrabold
+                	tracking-tight
+                	bg-gradient-to-r
+                	from-blue-900
+                	via-blue-700
+                	to-blue-500
+                	bg-clip-text
+                	text-transparent
+            	    "
+        	>
+            		ResuMate
+        	</h1>
+
+        	<p className="text-xs text-gray-500 tracking-wide">
+            		AI Powered Resume Analysis
+        	</p>
+
+    		</div>
+
+	</div>
+
+            {/* ================= RIGHT SIDE ================= */}
+            <div className="flex items-center gap-4">
+
+                {/* DASHBOARD */}
                 <button
                     onClick={() => navigate("/dashboard")}
-                    className="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300"
+                    className="
+                        px-5
+                        py-2.5
+                        rounded-xl
+                        bg-gradient-to-r
+                        from-gray-700
+                        to-gray-500
+                        text-white
+                        font-semibold
+                        hover:scale-105
+                        transition
+                        duration-300
+                        shadow-md
+                    "
                 >
                     Dashboard
                 </button>
 
+                {/* UPLOAD */}
                 <button
                     onClick={() => navigate("/upload")}
-                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                    className="
+                        px-5
+                        py-2.5
+                        rounded-xl
+                        bg-gradient-to-r
+                        from-blue-700
+                        to-blue-500
+                        text-white
+                        font-semibold
+                        hover:scale-105
+                        transition
+                        duration-300
+                        shadow-md
+                    "
                 >
-                    Upload
+                    Upload Resume
                 </button>
 
+                {/* LOGOUT */}
                 <button
                     onClick={handleLogout}
-                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                    className="
+                        px-5
+                        py-2.5
+                        rounded-xl
+                        bg-gradient-to-r
+                        from-red-700
+                        to-red-400
+                        text-white
+                        font-semibold
+                        hover:scale-105
+                        transition
+                        duration-300
+                        shadow-md
+                    "
                 >
                     Logout
                 </button>
+
             </div>
-        </div>
+
+        </nav>
     );
 }
 

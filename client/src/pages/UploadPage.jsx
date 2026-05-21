@@ -3,12 +3,14 @@ import API from "../services/api";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { AuthContext } from "../context/AuthContext";
-
+import background from "../images/bg.jpeg";
+import bg1 from "../images/bg1.jpeg";
 import Navbar from "../components/Navbar";
 import Loader from "../components/Loader";
 
 function UploadPage() {
     const [file, setFile] = useState(null);
+    const [jobTitle, setJobTitle] = useState("");
     const [jobDescription, setJobDescription] = useState("");
     const [loading, setLoading] = useState(false);
 
@@ -18,8 +20,8 @@ function UploadPage() {
     const handleAnalyze = async () => {
 
         // ---------------- VALIDATION ----------------
-        if (!file || !jobDescription.trim()) {
-            toast.error("Please upload resume and add job description");
+        if (!file || !jobDescription.trim() || !jobTitle.trim()) {
+            toast.error("Please upload resume, job title and job description");
             return;
         }
 
@@ -53,6 +55,7 @@ function UploadPage() {
             const analysisRes = await API.post("/analysis/analyze", {
                 resumeText,
                 jobDescription,
+                jobTitle,
                 userId: user?.id
             });
 
@@ -63,14 +66,11 @@ function UploadPage() {
             }
 
             // ---------------- SAVE RESULT LOCALLY ----------------
-            localStorage.setItem(
-                "analysisResult",
-                JSON.stringify(analysis.result)
-            );
+            localStorage.setItem("lastAnalysisId", analysis._id);
 
             toast.success("Analysis completed successfully!");
 
-            navigate("/result");
+            navigate(`/result/${analysis._id}`);
 
         } catch (error) {
 
@@ -88,13 +88,13 @@ function UploadPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100">
+        <div className="min-h-screen border-2 border-blue-300">
 
             <Navbar />
 
-            <div className="flex justify-center p-6">
+            <div className="flex justify-center p-6 min-h-screen bg-cover bg-center bg-no-repeat" style={{backgroundImage: `url(${bg1})`}}>
 
-                <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-3xl">
+                <div className="shadow-xl rounded-2xl p-8 w-full max-w-3xl bg-cover bg-center bg-no-repeat border-2 border-blue-400" style={{backgroundImage: `url(${background})`}}>
 
                     {/* TITLE */}
                     <h1 className="text-3xl font-bold text-center text-blue-600">
@@ -106,7 +106,7 @@ function UploadPage() {
                     </p>
 
                     {/* FILE UPLOAD CARD */}
-                    <div className="border-2 border-dashed border-gray-300 rounded-2xl p-8 mb-6 text-center bg-gray-50 hover:border-blue-400 transition">
+                    <div className="border-2 border-dashed border-blue-300 rounded-2xl p-8 mb-6 text-center bg-blue-50 hover:border-blue-400 transition">
 
                         <input
                             type="file"
@@ -118,9 +118,9 @@ function UploadPage() {
 
                         <label
                             htmlFor="resumeUpload"
-                            className="cursor-pointer text-blue-600 font-semibold text-lg"
+                            className="cursor-pointer text-blue-600 font-semibold text-lg hover:underline"
                         >
-                            Choose Resume File
+                            Click to Upload Resume
                         </label>
 
                         <p className="text-sm text-gray-500 mt-2">
@@ -141,29 +141,39 @@ function UploadPage() {
                         </div>
                     </div>
 
+                    {/* JOB TITLE */}
+                    <div className="mb-5">
+
+                        <label className="block mb-2 font-bold text-gray-700">
+                            Job Title
+                        </label>
+
+			<input
+                            type="text"
+                            placeholder="e.g. Frontend Developer, Data Analyst"
+                            value={jobTitle}
+                            onChange={(e) => setJobTitle(e.target.value)}
+                            className="border-2 border-blue-300 bg-blue-50 hover:border-blue-500 transition w-full p-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        />
+
+                    </div>
+
                     {/* JOB DESCRIPTION */}
                     <div className="mb-6">
 
-                        <label className="block mb-2 font-semibold text-gray-700">
+                        <label className="block mb-2 font-bold text-gray-700">
                             Job Description
                         </label>
 
-                        <textarea
+                        <div className="p-2 border-2 border-blue-300 bg-blue-50 hover:border-blue-500 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-400">
+			<textarea
                             placeholder="Paste job description here..."
                             value={jobDescription}
                             onChange={(e) => setJobDescription(e.target.value)}
-                            className="
-                                w-full
-                                p-4
-                                border
-                                rounded-2xl
-                                h-56
-                                resize-none
-                                focus:outline-none
-                                focus:ring-2
-                                focus:ring-blue-400
-                            "
-                        />
+                            className="transition w-full p-2 rounded-2xl h-56 resize-none focus:outline-none focus:ring-2 focus:ring-blue-50"/>
+
+			</div>
+
                     </div>
 
                     {/* BUTTON */}

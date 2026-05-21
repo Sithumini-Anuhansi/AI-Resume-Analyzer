@@ -5,43 +5,77 @@ import ResultPage from "./pages/ResultPage";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-
 import ProtectedRoute from "./components/ProtectedRoute";
 import { Toaster } from "react-hot-toast";
-
+import bg from "../src/images/bg.jpeg";
+import bg1 from "../src/images/bg1.jpeg";
+import logo from "../src/images/logo.png";
 
 // ---------------- HOME PAGE ----------------
 function Home() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+    <div className="bg-cover bg-center bg-no-repeat border-2 border-blue-300 min-h-screen flex items-center justify-center p-6 px-4" style={{backgroundImage: `url(${bg1})`}}>
 
-      <div className="bg-white p-10 rounded-2xl shadow-lg text-center max-w-xl w-full">
+      <div className="p-10 rounded-2xl shadow-lg text-center max-w-xl w-full bg-cover bg-center bg-no-repeat border-2 
+		border-blue-600" style={{backgroundImage: `url(${bg})`}}>
 
-        <h1 className="text-5xl font-bold text-blue-600 mb-4">
-          AI Resume Analyzer
-        </h1>
+	<div className="flex items-center cursor-pointer p-4">
 
-        <p className="text-gray-600 text-lg mb-6">
-          MERN Stack + AI Powered Resume Analysis System
-        </p>
+		{/* LOGO */}
+		<img
+        	    src={logo}
+        	    alt="ResuMate Logo"
+        	    className="h-35 object-contain"
+    		/>
+
+    		{/* APP NAME */}
+    		<div className="leading-tight flex flex-col justify-centre">
+
+        	<h1
+            	    className="
+                    	text-6xl
+                    	font-extrabold
+                	tracking-tight
+                	bg-gradient-to-r
+                	from-blue-900
+                	via-blue-700
+                	to-blue-500
+                	bg-clip-text
+                	text-transparent
+            	    "
+        	>
+            		ResuMate
+        	</h1>
+
+		<p className="text-lg text-gray-500 font-bold tracking-wide">
+            		Analyze. | Improve. | Succeed.
+        	</p>
+
+		<p className="text-xs text-gray-500 tracking-wide">
+            		AI Powered Resume Analysis System
+        	</p>
+
+    		</div>
+
+	</div>
 
         <div className="space-y-3 text-left mb-8">
 
-          <div className="bg-gray-100 p-3 rounded-lg">
+          <div className="border-2 border-blue-300 bg-gray-100 p-3 rounded-lg">
             ✅ Upload Resume PDF/DOCX
           </div>
 
-          <div className="bg-gray-100 p-3 rounded-lg">
+          <div className="border-2 border-blue-300 bg-gray-100 p-3 rounded-lg">
             ✅ Analyze Job Description Match
           </div>
 
-          <div className="bg-gray-100 p-3 rounded-lg">
+          <div className="border-2 border-blue-300 bg-gray-100 p-3 rounded-lg">
             ✅ Get AI Skill Suggestions
           </div>
 
-          <div className="bg-gray-100 p-3 rounded-lg">
+          <div className="border-2 border-blue-300 bg-gray-100 p-3 rounded-lg">
             ✅ ATS Resume Score
           </div>
 
@@ -49,7 +83,7 @@ function Home() {
 
         <button
           onClick={() => navigate("/login")}
-          className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition duration-300"
+          className="px-6 py-3 font-bold bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition duration-300"
         >
           Get Started
         </button>
@@ -73,8 +107,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
-
+	
         {/* PROTECTED ROUTES */}
         <Route
           path="/upload"
@@ -86,7 +119,7 @@ function App() {
         />
 
         <Route
-          path="/result"
+          path="/result/:id"
           element={
             <ProtectedRoute>
               <ResultPage />

@@ -2,15 +2,22 @@ const mongoose = require("mongoose");
 
 const analysisSchema = new mongoose.Schema(
     {
+        // =========================
+        // USER REFERENCE
+        // =========================
         userId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
             required: true
         },
 
-        resumeText: {
+        // =========================
+        // JOB INFORMATION
+        // =========================
+        jobTitle: {
             type: String,
-            required: true
+            required: true,
+            trim: true
         },
 
         jobDescription: {
@@ -18,17 +25,58 @@ const analysisSchema = new mongoose.Schema(
             required: true
         },
 
+        // =========================
+        // RESUME DATA
+        // =========================
+        resumeText: {
+            type: String,
+            required: true
+        },
+
+        // =========================
+        // AI RESULT OBJECT
+        // =========================
         result: {
-            score: Number,
-            matchedSkills: [String],
-            missingSkills: [String],
-            strengths: [String],
-            weaknesses: [String],
-            suggestions: [String],
-            atsTips: [String]
+            score: {
+                type: Number,
+                default: 0
+            },
+
+            matchedSkills: {
+                type: [String],
+                default: []
+            },
+
+            missingSkills: {
+                type: [String],
+                default: []
+            },
+
+            strengths: {
+                type: [String],
+                default: []
+            },
+
+            weaknesses: {
+                type: [String],
+                default: []
+            },
+
+            suggestions: {
+                type: [String],
+                default: []
+            },
+
+            atsTips: {
+                type: [String],
+                default: []
+            }
         }
+
     },
-    { timestamps: true }
+    {
+        timestamps: true
+    }
 );
 
 module.exports = mongoose.model("Analysis", analysisSchema);
