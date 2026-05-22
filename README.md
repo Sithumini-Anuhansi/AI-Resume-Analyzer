@@ -11,124 +11,110 @@
 
 ---
 
+# 🌐 Live Demo
+
+- Frontend: https://resumate-ai-sithumini-anuhansis-projects.vercel.app/ 
+- Backend: https://resumate-ai-knav.onrender.com  
+
+> ⚠️ Backend may take a few seconds to wake up (free tier cold start).
+
+---
+
 # 📌 Overview
 
 **ResuMate** is a modern AI-powered Resume Analysis System developed using the MERN Stack. The platform enables users to upload resumes, compare them with job descriptions using Artificial Intelligence, receive ATS optimization insights, and track resume performance through an interactive analytics dashboard.
 
-The application follows a SaaS-style architecture with secure authentication, MongoDB persistence, AI-driven recommendations, and a modern responsive UI.
+The system follows a SaaS-style architecture with secure authentication, MongoDB persistence, AI-driven recommendations, and a modern responsive UI.
 
 ---
 
 # ✨ Key Features
 
 ## 🔐 Authentication & Security
+- JWT Authentication
+- User Registration & Login
+- Protected Routes
+- Persistent User Sessions
+- Password Visibility Toggle
 
-* JWT Authentication
-* User Registration & Login
-* Protected Routes
-* Persistent User Sessions
-* Password Visibility Toggle
-
-## 📄 Resume Analysis
-
-* Upload PDF/DOC/DOCX resumes
-* Automatic resume text extraction
-* AI-powered resume-job matching
-* ATS compatibility scoring
-* Matched skills detection
-* Missing skills identification
-* AI-generated improvement suggestions
+## 📄 AI Resume Analysis
+- Upload PDF/DOC/DOCX resumes
+- Automatic resume text extraction
+- AI-powered resume-job matching
+- ATS compatibility scoring
+- Matched skills detection
+- Missing skills identification
+- AI-generated improvement suggestions
 
 ## 📊 Analytics Dashboard
-
-* Resume analysis history
-* Interactive score trend chart
-* Job-role-based filtering
-* Highest & average score tracking
-* Detailed result navigation
+- Resume analysis history
+- Interactive score trend chart
+- Job-role-based filtering
+- Highest & average score tracking
+- Detailed result navigation
 
 ## 🎨 Modern UI/UX
-
-* Responsive SaaS dashboard design
-* Interactive cards & animations
-* Lucide React icons integration
-* Scrollable insight containers
-* Dynamic background styling
+- Responsive SaaS dashboard design
+- Interactive cards & animations
+- Lucide React icons integration
+- Scrollable insight containers
+- Dynamic background styling
 
 ---
 
 # 🖼️ System Screenshots
 
 ## 🏠 Home Page
-
 <img width="100%" alt="Home Page" src="./screenshots/HomePage.jpeg">
 
----
-
 ## 🔑 Login Page
-
 <img width="100%" alt="Login Page" src="./screenshots/LoginPage.jpeg">
 
----
-
 ## 📝 Register Page
-
 <img width="100%" alt="Register Page" src="./screenshots/RegisterPage.jpeg">
 
----
-
 ## 📤 Resume Upload Page
-
 <img width="100%" alt="Upload Page" src="./screenshots/UploadPage.jpeg">
 
----
-
 ## 📈 Dashboard Analytics
-
 <img width="100%" alt="Dashboard" src="./screenshots/Dashboard.jpeg">
 
----
+## 🤖 AI Result Pages
 
-## 🤖 AI Resume Result Pages
-
-### ✅ Ready Status
-
+### Ready
 <img width="100%" alt="Ready Result" src="./screenshots/ResultPageReady.jpeg">
 
-### ⚠️ Improve Status
-
+### Improve
 <img width="100%" alt="Improve Result" src="./screenshots/ResultPageImprove.jpeg">
 
-### ❌ Critical Status
-
+### Critical
 <img width="100%" alt="Critical Result" src="./screenshots/ResultPageCritical.jpeg">
 
 ---
 
-# 🧠 AI Analysis Capabilities
+# 🧠 AI Intelligence Layer
 
-The AI engine analyzes:
+ResuMate AI evaluates:
 
-* Resume-job compatibility
-* ATS optimization quality
-* Technical skill alignment
-* Missing requirements
-* Resume strengths & weaknesses
-* Resume improvement recommendations
+- Resume-job alignment  
+- ATS optimization score  
+- Missing technical skills  
+- Strengths & weaknesses  
+- Personalized improvement tips  
 
 ---
 
 # 🏗️ System Architecture
 
 ```text
-Frontend (React + Tailwind CSS)
+Frontend (React + Tailwind)
         ↓
-REST API (Express.js)
+Backend (Express.js API)
         ↓
-AI Analysis Service
+AI Service (OpenAI API)
         ↓
-MongoDB Database
-```
+Database (MongoDB Atlas)
+````
 
 ---
 
@@ -149,14 +135,13 @@ MongoDB Database
 * Node.js
 * Express.js
 * JWT Authentication
-* Multer
-* PDF Parser
-* DOCX Parser
+* Multer (File Uploads)
+* PDF & DOCX Parsing
 
 ## Database
 
-* MongoDB
-* Mongoose
+* MongoDB Atlas
+* Mongoose ODM
 
 ## AI Integration
 
@@ -169,31 +154,79 @@ MongoDB Database
 ```bash
 AI-Resume-Analyzer/
 │
-├── client/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── context/
-│   │   ├── images/
-│   │   ├── pages/
-│   │   └── services/
-│
-├── server/
-│   ├── config/
-│   ├── controllers/
-│   ├── middleware/
-│   ├── models/
-│   ├── routes/
-│   ├── services/
-│   └── utils/
-│
-├── screenshots/
-├── README.md
-└── .gitignore
+├── client/          # Frontend (React)
+├── server/          # Backend (Node.js)
+├── screenshots/     # UI previews
+└── README.md
 ```
 
 ---
 
+# 🔄 System Workflow
+
+```text
+User Login/Register
+        ↓
+Upload Resume
+        ↓
+Extract Text (Backend)
+        ↓
+AI Analysis (OpenAI)
+        ↓
+Generate Score + Insights
+        ↓
+Store in MongoDB
+        ↓
+Display Dashboard Results
+````
+
+---
+
+# 🧪 Testing
+
+Backend APIs were tested using **Postman**.
+
+### Coverage includes:
+
+- Authentication flow  
+- JWT validation  
+- Resume upload  
+- AI analysis endpoint  
+- Dashboard data retrieval  
+- Error handling scenarios  
+
+---
+
+# ☁️ Deployment Architecture
+
+Frontend → Vercel  
+Backend → Render  
+Database → MongoDB Atlas  
+AI → OpenAI API  
+
+---
+
+# 🔄 CI/CD Pipeline
+
+GitHub → Render (Auto Deploy Backend)  
+GitHub → Vercel (Auto Deploy Frontend)  
+
+Every push to `main` branch triggers:
+
+- ✔ Build  
+- ✔ Deploy  
+- ✔ Production update  
+
+---
+
 # 🚀 Installation
+
+## 📌 Prerequisites
+
+* Node.js (v16+ recommended)
+* MongoDB database
+
+---
 
 ## 1️⃣ Clone Repository
 
@@ -235,8 +268,12 @@ OPENAI_API_KEY=your_openai_api_key
 ## Frontend `.env`
 
 ```env
-VITE_API_URL=http://localhost:5000/api
+VITE_API_URL=https://your-backend-url/api
 ```
+
+---
+
+⚠️ Do NOT push `.env` files to GitHub.
 
 ---
 
@@ -248,8 +285,6 @@ VITE_API_URL=http://localhost:5000/api
 cd server
 npm run dev
 ```
-
----
 
 ## Start Frontend
 
@@ -292,6 +327,7 @@ npm run dev
 * Password Reset
 * Advanced Analytics
 * Job Recommendation Engine
+* Admin dashboard
 
 ---
 
@@ -304,36 +340,30 @@ npm run dev
 | v2.0    | Fullstack AI Integration    |
 | v2.1    | Dashboard Analytics         |
 | v2.2    | Pre-production Review       |
-| v3.0    | Production-ready Release    |
+| v3.0    | Pre-production Release      |
 | v3.1    | UI Polish & UX Improvements |
+| v3.2    | Pre-production README       |
+| v4.0    | Final Production Release    |
+| v4.1    | Final README Update         | 
 
 ---
 
 # 👩‍💻 Developer
 
-## Sithumini Anuhansi
+**Sithumini Anuhansi**
 
 * Software Engineering Undergraduate
 * MERN Stack Developer
 * AI Application Developer
 
-GitHub Repository:
+GitHub:
+[https://github.com/Sithumini-Anuhansi/AI-Resume-Analyzer](https://github.com/Sithumini-Anuhansi/AI-Resume-Analyzer)
 
-```text
-https://github.com/Sithumini-Anuhansi/AI-Resume-Analyzer
-```
+LinkedIn:
+[https://www.linkedin.com/in/sithumini-anuhansi-5b32a8334](https://www.linkedin.com/in/sithumini-anuhansi-5b32a8334)
 
-LinkedIn Profile:
-
-```text
-https://www.linkedin.com/in/sithumini-anuhansi-5b32a8334?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
-```
-
-Email Address:
-
-```text
-anuhansisithumini@gmail.com
-```
+Email:
+[anuhansisithumini@gmail.com](mailto:anuhansisithumini@gmail.com)
 
 ---
 
@@ -347,12 +377,15 @@ This project is licensed under the MIT License.
 
 If you found this project useful:
 
-* ⭐ Star the repository
-* 🍴 Fork the project
-* 📢 Share with others
+* ⭐ Star this repository
+* 🍴 Fork it
+* 📢 Share it
 
 ---
 
 # 🚀 Final Note
 
-ResuMate demonstrates the implementation of a modern AI-powered SaaS-style web application using the MERN Stack, integrating authentication, resume processing, AI analysis, dashboard analytics, and professional UI/UX design principles.
+ResuMate demonstrates a modern AI-powered production-grade SaaS application built with MERN stack, integrating authentication, resume processing, AI analysis, and dashboard analytics with a production-ready UI/UX design.
+
+```
+
