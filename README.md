@@ -323,6 +323,18 @@ GitHub Repository:
 https://github.com/Sithumini-Anuhansi/AI-Resume-Analyzer
 ```
 
+LinkedIn Profile:
+
+```text
+https://www.linkedin.com/in/sithumini-anuhansi-5b32a8334?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
+```
+
+Email Address:
+
+```text
+anuhansisithumini@gmail.com
+```
+
 ---
 
 # 📄 License
