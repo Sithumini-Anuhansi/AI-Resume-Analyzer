@@ -81,13 +81,13 @@ The system follows a SaaS-style architecture with secure authentication, MongoDB
 
 ## 🤖 AI Result Pages
 
-### Ready
+### 🟢 Ready Status
 <img width="100%" alt="Ready Result" src="./screenshots/ResultPageReady.jpeg">
 
-### Improve
+### 🟡 Improve Status
 <img width="100%" alt="Improve Result" src="./screenshots/ResultPageImprove.jpeg">
 
-### Critical
+### 🔴 Critical Status
 <img width="100%" alt="Critical Result" src="./screenshots/ResultPageCritical.jpeg">
 
 ---
@@ -263,6 +263,7 @@ PORT=5000
 MONGO_URI=your_mongodb_connection
 JWT_SECRET=your_secret_key
 OPENAI_API_KEY=your_openai_api_key
+CLIENT_URL=https://your-frontend-url
 ```
 
 ## Frontend `.env`
@@ -387,5 +388,5 @@ If you found this project useful:
 
 ResuMate demonstrates a modern AI-powered production-grade SaaS application built with MERN stack, integrating authentication, resume processing, AI analysis, and dashboard analytics with a production-ready UI/UX design.
 
-```
+---
 

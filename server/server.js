@@ -1,9 +1,12 @@
+// server.js
+
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
+const fs = require("fs");
 
 const connectDB = require("./config/db");
 
@@ -18,11 +21,11 @@ connectDB();
 const app = express();
 
 
-// 🔒 SECURITY HEADERS
+// SECURITY HEADERS
 app.use(helmet());
 
 
-// 🔒 RATE LIMIT (GLOBAL - SAFE FOR STUDENT PROJECT)
+// RATE LIMIT 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 100,
@@ -31,11 +34,11 @@ const limiter = rateLimit({
 app.use(limiter);
 
 
-// 📊 LOGGING
+// LOGGING
 app.use(morgan("dev"));
 
 
-// 🌐 CORS CONFIG
+// CORS CONFIG
 app.use(cors({
     origin: process.env.CLIENT_URL,
     credentials: true
@@ -44,6 +47,12 @@ app.use(cors({
 
 // JSON BODY
 app.use(express.json());
+
+
+// Ensure uploads folder exists (IMPORTANT FOR RENDER)
+if (!fs.existsSync("uploads")) {
+    fs.mkdirSync("uploads");
+}
 
 
 // STATIC FILES
