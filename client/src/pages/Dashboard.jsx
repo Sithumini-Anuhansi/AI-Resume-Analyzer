@@ -127,34 +127,25 @@ function Dashboard() {
                                 {/* Stats Cards */}
                                 <div className="grid md:grid-cols-3 gap-6">
 
-                                    <div className="bg-blue-300 font-semibold p-6 rounded-2xl border-2 border-blue-500 hover:scale-105 
-							transition duration-300 shadow-md">
-                                        <h2 className="text-gray-500 font-semibold mb-2">
-                                            Total Analyses
-                                        </h2>
-                                        <p className="text-5xl font-bold text-blue-700">
-                                            {total}
-                                        </p>
+                                   <div className="bg-blue-200 p-4 rounded-3xl shadow flex flex-col items-center text-center 
+						border-2 border-blue-500 hover:scale-105 transition duration-300">
+
+                                			<p className="text-lg text-blue-600 font-bold"> Total Analyses </p>
+                                			<p className="p-2 text-5xl font-bold text-pink-500"> {total} </p>
+                                   </div>
+
+                                    <div className="bg-blue-100 p-4 rounded-3xl shadow flex flex-col items-center text-center 
+						border-2 border-blue-400 hover:scale-105 transition duration-300">
+                                		
+							<p className="text-lg text-blue-500 font-bold "> Average Score </p>
+                                        		<p className="p-2 text-5xl font-bold text-purple-600"> {avgScore}% </p>
                                     </div>
 
-                                    <div className="bg-blue-200 font-semibold p-6 rounded-2xl shadow border-2 border-blue-400 hover:scale-105 
-							transition duration-300 shadow-md">
-                                        <h2 className="text-gray-500 font-semibold mb-2">
-                                            Average Score
-                                        </h2>
-                                        <p className="text-5xl font-bold text-purple-600">
-                                            {avgScore}%
-                                        </p>
-                                    </div>
-
-                                    <div className="bg-blue-100 font-semibold p-6 rounded-2xl shadow border-2 border-blue-300 hover:scale-105 
-							transition duration-300 shadow-md">
-                                        <h2 className="text-gray-500 font-semibold mb-2">
-                                            Highest Score
-                                        </h2>
-                                        <p className="text-5xl font-bold text-green-600">
-                                            {highestScore}%
-                                        </p>
+                                    <div className="bg-blue-200 p-4 rounded-3xl shadow flex flex-col items-center text-center 
+						border-2 border-blue-500 hover:scale-105 transition duration-300">
+                                         
+							<p className="text-lg text-blue-600 font-bold"> Highest Score </p>
+                                                        <p className="p-2 text-5xl font-bold text-green-600"> {highestScore}% </p>
                                     </div>
 
                                 </div>

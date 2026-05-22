@@ -1,256 +1,346 @@
-\# AI Resume Analyzer
+# 🚀 ResuMate — AI Powered Resume Analyzer
 
+<img width="100%" alt="ResuMate Banner" src="./screenshots/resumate.png">
 
+![React](https://img.shields.io/badge/Frontend-React-blue)
+![Node.js](https://img.shields.io/badge/Backend-Node.js-green)
+![MongoDB](https://img.shields.io/badge/Database-MongoDB-darkgreen)
+![JWT](https://img.shields.io/badge/Auth-JWT-orange)
+![OpenAI](https://img.shields.io/badge/AI-OpenAI-purple)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-An AI-powered Resume Analyzer web application built using the MERN Stack. Users can upload resumes, compare them against job descriptions, and receive intelligent analysis including ATS score, missing skills, and improvement suggestions.
+---
 
+# 📌 Overview
 
+**ResuMate** is a modern AI-powered Resume Analysis System developed using the MERN Stack. The platform enables users to upload resumes, compare them with job descriptions using Artificial Intelligence, receive ATS optimization insights, and track resume performance through an interactive analytics dashboard.
 
-\---
+The application follows a SaaS-style architecture with secure authentication, MongoDB persistence, AI-driven recommendations, and a modern responsive UI.
 
+---
 
+# ✨ Key Features
 
-\## Features
+## 🔐 Authentication & Security
 
+* JWT Authentication
+* User Registration & Login
+* Protected Routes
+* Persistent User Sessions
+* Password Visibility Toggle
 
+## 📄 Resume Analysis
 
-\- User Authentication (JWT)
+* Upload PDF/DOC/DOCX resumes
+* Automatic resume text extraction
+* AI-powered resume-job matching
+* ATS compatibility scoring
+* Matched skills detection
+* Missing skills identification
+* AI-generated improvement suggestions
 
-\- Resume Upload (PDF/DOCX)
+## 📊 Analytics Dashboard
 
-\- Resume Text Extraction
+* Resume analysis history
+* Interactive score trend chart
+* Job-role-based filtering
+* Highest & average score tracking
+* Detailed result navigation
 
-\- AI-Based Resume Analysis
+## 🎨 Modern UI/UX
 
-\- Job Description Matching
+* Responsive SaaS dashboard design
+* Interactive cards & animations
+* Lucide React icons integration
+* Scrollable insight containers
+* Dynamic background styling
 
-\- ATS Score Generation
+---
 
-\- Missing Skills Detection
+# 🖼️ System Screenshots
 
-\- Resume Improvement Suggestions
+## 🏠 Home Page
 
-\- Dashboard with Analysis History
+<img width="100%" alt="Home Page" src="./screenshots/HomePage.jpeg">
 
-\- Responsive Modern UI
+---
 
+## 🔑 Login Page
 
+<img width="100%" alt="Login Page" src="./screenshots/LoginPage.jpeg">
 
-\---
+---
 
+## 📝 Register Page
 
+<img width="100%" alt="Register Page" src="./screenshots/RegisterPage.jpeg">
 
-\## Tech Stack
+---
 
+## 📤 Resume Upload Page
 
+<img width="100%" alt="Upload Page" src="./screenshots/UploadPage.jpeg">
 
-\### Frontend
+---
 
-\- React.js
+## 📈 Dashboard Analytics
 
-\- Tailwind CSS
+<img width="100%" alt="Dashboard" src="./screenshots/Dashboard.jpeg">
 
-\- React Router DOM
+---
 
-\- Axios
+## 🤖 AI Resume Result Pages
 
-\- React Hot Toast
+### ✅ Ready Status
 
+<img width="100%" alt="Ready Result" src="./screenshots/ResultPageReady.jpeg">
 
+### ⚠️ Improve Status
 
-\### Backend
+<img width="100%" alt="Improve Result" src="./screenshots/ResultPageImprove.jpeg">
 
-\- Node.js
+### ❌ Critical Status
 
-\- Express.js
+<img width="100%" alt="Critical Result" src="./screenshots/ResultPageCritical.jpeg">
 
-\- MongoDB
+---
 
-\- Mongoose
+# 🧠 AI Analysis Capabilities
 
-\- JWT Authentication
+The AI engine analyzes:
 
-\- bcryptjs
+* Resume-job compatibility
+* ATS optimization quality
+* Technical skill alignment
+* Missing requirements
+* Resume strengths & weaknesses
+* Resume improvement recommendations
 
-\- Multer
+---
 
+# 🏗️ System Architecture
 
+```text
+Frontend (React + Tailwind CSS)
+        ↓
+REST API (Express.js)
+        ↓
+AI Analysis Service
+        ↓
+MongoDB Database
+```
 
-\### AI \& Parsing
+---
 
-\- Google Gemini API / OpenAI API
+# ⚙️ Tech Stack
 
-\- pdf-parse
+## Frontend
 
-\- mammoth
+* React.js
+* Tailwind CSS
+* React Router DOM
+* Axios
+* Recharts
+* Lucide React
+* React Hot Toast
 
+## Backend
 
+* Node.js
+* Express.js
+* JWT Authentication
+* Multer
+* PDF Parser
+* DOCX Parser
 
-\---
+## Database
 
+* MongoDB
+* Mongoose
 
+## AI Integration
 
-\## Folder Structure
+* OpenAI API
 
+---
 
+# 📂 Project Structure
 
 ```bash
-
 AI-Resume-Analyzer/
-
 │
-
 ├── client/
-
+│   ├── src/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── images/
+│   │   ├── pages/
+│   │   └── services/
 │
-
 ├── server/
-
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── services/
+│   └── utils/
 │
-
-└── README.md
-
+├── screenshots/
+├── README.md
+└── .gitignore
 ```
 
+---
 
+# 🚀 Installation
 
-\---
-
-
-
-\## Installation
-
-
-
-\### Clone Repository
-
-
+## 1️⃣ Clone Repository
 
 ```bash
-
-git clone https://github.com/YOUR\_USERNAME/AI-Resume-Analyzer.git
-
+git clone https://github.com/Sithumini-Anuhansi/AI-Resume-Analyzer.git
 ```
 
+---
 
-
-\---
-
-
-
-\## Backend Setup
-
-
+## 2️⃣ Install Frontend Dependencies
 
 ```bash
-
-cd server
-
-npm install
-
-npm run dev
-
-```
-
-
-
-\---
-
-
-
-\## Frontend Setup
-
-
-
-```bash
-
 cd client
-
 npm install
-
-npm run dev
-
 ```
 
+---
 
+## 3️⃣ Install Backend Dependencies
 
-\---
+```bash
+cd ../server
+npm install
+```
 
+---
 
+# 🔑 Environment Variables
 
-\## Environment Variables
-
-
-
-Create a `.env` file inside `server/`
-
-
+## Backend `.env`
 
 ```env
-
 PORT=5000
-
-MONGO\_URI=your\_mongodb\_connection
-
-JWT\_SECRET=your\_secret\_key
-
-GEMINI\_API\_KEY=your\_api\_key
-
+MONGO_URI=your_mongodb_connection
+JWT_SECRET=your_secret_key
+OPENAI_API_KEY=your_openai_api_key
 ```
 
+## Frontend `.env`
 
+```env
+VITE_API_URL=http://localhost:5000/api
+```
 
-\---
+---
 
+# ▶️ Running the Project
 
+## Start Backend
 
-\## Future Improvements
+```bash
+cd server
+npm run dev
+```
 
+---
 
+## Start Frontend
 
-\- AI Resume Rewriter
+```bash
+cd client
+npm run dev
+```
 
-\- Interview Question Generator
+---
 
-\- Resume Keyword Heatmap
+# 🌐 API Endpoints
 
-\- LinkedIn Profile Analyzer
+| Method | Endpoint                | Description       |
+| ------ | ----------------------- | ----------------- |
+| POST   | `/api/auth/register`    | Register User     |
+| POST   | `/api/auth/login`       | Login User        |
+| POST   | `/api/resume/upload`    | Upload Resume     |
+| POST   | `/api/analysis/analyze` | Analyze Resume    |
+| GET    | `/api/dashboard`        | Get User Analyses |
 
-\- Admin Dashboard
+---
 
-\- Dark/Light Theme
+# 🛡️ Security Features
 
-\- Docker Deployment
+* JWT Authentication
+* Protected Routes
+* Secure API Access
+* Input Validation
+* Environment Variable Protection
+* MongoDB Secure Storage
 
+---
 
+# 🎯 Future Enhancements
 
-\---
+* Resume PDF Export
+* AI Resume Rewriting
+* AI Cover Letter Generator
+* Email Verification
+* Password Reset
+* Advanced Analytics
+* Job Recommendation Engine
 
+---
 
+# 📦 Release Versions
 
-\## Deployment
+| Version | Description                 |
+| ------- | --------------------------- |
+| v1.0    | Backend Foundation          |
+| v1.1    | Frontend Implementation     |
+| v2.0    | Fullstack AI Integration    |
+| v2.1    | Dashboard Analytics         |
+| v2.2    | Pre-production Review       |
+| v3.0    | Production-ready Release    |
+| v3.1    | UI Polish & UX Improvements |
 
+---
 
+# 👩‍💻 Developer
 
-\- Frontend → Vercel
+## Sithumini Anuhansi
 
-\- Backend → Render
+* Software Engineering Undergraduate
+* MERN Stack Developer
+* AI Application Developer
 
-\- Database → MongoDB Atlas
+GitHub Repository:
 
+```text
+https://github.com/Sithumini-Anuhansi/AI-Resume-Analyzer
+```
 
+---
 
-\---
+# 📄 License
 
+This project is licensed under the MIT License.
 
+---
 
-\## Author
+# ⭐ Support
 
+If you found this project useful:
 
+* ⭐ Star the repository
+* 🍴 Fork the project
+* 📢 Share with others
 
-Sithumini Anuhansi
+---
 
+# 🚀 Final Note
 
-
-Software Engineering Undergraduate at NIBM Sri Lanka
-
+ResuMate demonstrates the implementation of a modern AI-powered SaaS-style web application using the MERN Stack, integrating authentication, resume processing, AI analysis, dashboard analytics, and professional UI/UX design principles.

@@ -68,7 +68,7 @@ function ResultPage() {
 
     const scoreColor =
         score >= 80 ? "text-green-600" :
-        score >= 50 ? "text-orange-400" :
+        score >= 50 ? "text-yellow-500" :
         "text-red-600";
 
     return (
@@ -100,8 +100,9 @@ function ResultPage() {
                         {/* TOP STATS */}
                         <div className="grid md:grid-cols-3 gap-6">
 
-                            <div className="bg-blue-300 p-6 rounded-3xl shadow flex flex-col items-center text-center border-2 border-blue-500 hover:scale-105 transition duration-300">
-                                <p className="text-lg text-gray-500 font-semibold">
+                            <div className="bg-blue-200 p-6 rounded-3xl shadow flex flex-col items-center text-center 
+					border-2 border-blue-500 hover:scale-105 transition duration-300">
+                                <p className="text-lg text-blue-600 font-bold">
                                     Match Score
                                 </p>
 
@@ -116,12 +117,14 @@ function ResultPage() {
                                 <Activity className="w-5 h-5 text-gray-600 mt-2" />
                             </div>
 
-                            <div className="bg-blue-200 p-6 rounded-3xl shadow flex flex-col items-center text-center border-2 border-blue-400 hover:scale-105 transition duration-300">
-                                <p className="text-lg text-gray-500 font-semibold">
+                            <div className="bg-blue-100 p-6 rounded-3xl shadow flex flex-col items-center text-center 
+					border-2 border-blue-400 hover:scale-105 transition duration-300">
+                                <p className="text-lg text-blue-500 font-bold ">
                                     Target Role
                                 </p>
 
-                                <h2 className="text-lg font-bold text-blue-600 mt-2">
+                                <h2 className="text-xl font-extrabold mt-2 tracking-tight bg-gradient-to-r 
+					from-gray-700 via-gray-500 to-gray-700 bg-clip-text text-transparent">
                                     {result.jobTitle}
                                 </h2>
 
@@ -132,8 +135,9 @@ function ResultPage() {
                                 <Briefcase className="w-5 h-5 text-gray-600 mt-2" />
                             </div>
 
-                            <div className="bg-blue-100 p-6 rounded-3xl shadow flex flex-col items-center text-center border-2 border-blue-300 hover:scale-105 transition duration-300">
-                                <p className="text-lg text-gray-500 font-semibold">
+                            <div className="bg-blue-200 p-6 rounded-3xl shadow flex flex-col items-center text-center 
+					border-2 border-blue-500 hover:scale-105 transition duration-300">
+                                <p className="text-lg text-blue-600 font-bold">
                                     Status
                                 </p>
 
@@ -154,14 +158,14 @@ function ResultPage() {
                         <div className="grid md:grid-cols-2 gap-6">
 
                             {/* SUGGESTIONS */}
-                            <div className="p-4 rounded-3xl shadow bg-cover bg-center bg-no-repeat border-2 border-blue-600" style={{ backgroundImage: `url(${bg2})` }}>
-                                <h2 className="text-2xl font-bold text-yellow-400 mb-4">
+                            <div className="p-4 rounded-3xl shadow bg-cover bg-center bg-no-repeat border-2 border-blue-600" 								style={{ backgroundImage: `url(${bg2})` }}>
+                                <h2 className="text-2xl font-bold text-gray-600 mb-4">
                                     Suggestions
                                 </h2>
 
-                                <div className="space-y-3 max-h-[100vh] overflow-y-auto pr-4">
+                                <div className="space-y-3 max-h-[100vh] overflow-y-auto pr-4 text-left">
                                     {result.result?.suggestions?.map((s, i) => (
-                                        <div key={i} className="bg-yellow-100 p-3 rounded-xl">
+                                        <div key={i} className="bg-gray-200 p-3 rounded-xl">
                                             {s}
                                         </div>
                                     ))}
@@ -170,13 +174,13 @@ function ResultPage() {
 
                             {/* ATS */}
                             <div className="p-4 rounded-3xl shadow bg-cover bg-center bg-no-repeat border-2 border-blue-600" style={{ backgroundImage: `url(${bg2})` }}>
-                                <h2 className="text-2xl font-bold text-purple-600 mb-4">
+                                <h2 className="text-2xl font-bold text-gray-600 mb-4">
                                     ATS Tips
                                 </h2>
 
-                                <div className="space-y-3 max-h-[100vh] overflow-y-auto pr-4">
+                                <div className="space-y-3 max-h-[100vh] overflow-y-auto pr-4 text-left">
                                     {result.result?.atsTips?.map((t, i) => (
-                                        <div key={i} className="bg-purple-200 p-3 rounded-xl">
+                                        <div key={i} className="bg-gray-100 p-3 rounded-xl">
                                             {t}
                                         </div>
                                     ))}
@@ -190,7 +194,7 @@ function ResultPage() {
                     <div className="lg:col-span-4 flex flex-col gap-6 bg-cover bg-center bg-no-repeat p-6 rounded-3xl border-2 border-blue-400" style={{ backgroundImage: `url(${bg1})` }}>
 
                         {/* PERFORMANCE */}
-                        <div className="bg-blue-600 p-6 rounded-3xl shadow text-center">
+                        <div className="bg-gradient-to-r from-blue-400 via-blue-600 to-blue-400 p-6 rounded-3xl shadow text-center">
                             <h2 className="text-white text-xl font-bold mb-5">
                                 Performance Insight
                             </h2>
