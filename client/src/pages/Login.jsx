@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import bg from "../images/bg1.jpeg";
 
-// 👇 Lucide icons
+// Lucide icons
 import { Eye, EyeOff } from "lucide-react";
 
 function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [showPassword, setShowPassword] = useState(false); // ✅ NEW
+    const [showPassword, setShowPassword] = useState(false); 
     const [loading, setLoading] = useState(false);
 
     const { login } = useContext(AuthContext);
