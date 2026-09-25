@@ -385,5 +385,5 @@ ResuMate demonstrates a modern AI-powered production-grade SaaS application buil
 ---
 
 <div align="right">
-<img src="https://visitor-badge.laobi.icu/badge?page_id=Sithumini-Anuhansi.Emergency-Blood-Matching-Tool&left_text=Views"/>
+<img src="https://visitor-badge.laobi.icu/badge?page_id=Sithumini-Anuhansi.AI-Resume-Analyzer&left_text=Views"/>
 </div>
