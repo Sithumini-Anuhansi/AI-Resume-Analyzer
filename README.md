@@ -357,14 +357,8 @@ npm run dev
 * MERN Stack Developer
 * AI Application Developer
 
-GitHub:
-[https://github.com/Sithumini-Anuhansi/AI-Resume-Analyzer](https://github.com/Sithumini-Anuhansi/AI-Resume-Analyzer)
-
-LinkedIn:
-[https://www.linkedin.com/in/sithumini-anuhansi-5b32a8334](https://www.linkedin.com/in/sithumini-anuhansi-5b32a8334)
-
-Email:
-[anuhansisithumini@gmail.com](mailto:anuhansisithumini@gmail.com)
+[![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:anuhansisithumini@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sithumini-anuhansi-5b32a8334)
 
 ---
 
@@ -390,3 +384,6 @@ ResuMate demonstrates a modern AI-powered production-grade SaaS application buil
 
 ---
 
+<div align="right">
+<img src="https://visitor-badge.laobi.icu/badge?page_id=Sithumini-Anuhansi.Emergency-Blood-Matching-Tool&left_text=Views"/>
+</div>
